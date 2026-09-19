@@ -1,0 +1,19 @@
+{
+  "name": "aaryan-bakery-sweet-studio",
+  "version": "1.0.0",
+  "description": "Sweet Studio - Aaryan Bakery Food Ordering, Order Enquiry & AI Chatbot Platform",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "node server/server.js",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "cd client && npm install && npm run build"
+  },
+  "keywords": ["bakery", "aaryan-bakery", "react", "express", "ai-chatbot", "firestore", "cloudinary"],
+  "author": "Aaryan Bakery Team",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

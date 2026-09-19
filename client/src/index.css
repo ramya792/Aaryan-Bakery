@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF7F2;
+    color: #2C1810;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* Custom Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5EFEB;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C84B31;
+}
+
+/* Shimmer & Pulse Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Guarantee floating widgets never overlap mobile navigation */
+body[data-mobile-menu="open"] #floating-action-widget,
+body[data-mobile-menu="open"] #aaryan-assistant-trigger {
+  display: none !important;
+}
+
+/* Smooth Right-to-Left Continuous Cake Cards Marquee */
+@keyframes scrollRightToLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-cake-marquee {
+  display: flex;
+  width: max-content;
+  animation: scrollRightToLeft 48s linear infinite;
+  will-change: transform;
+}
+
+.animate-cake-marquee:hover,
+.animate-cake-marquee.is-paused {
+  animation-play-state: paused;
+}
+
+@media (max-width: 640px) {
+  .animate-cake-marquee {
+    animation-duration: 36s;
+  }
+}
