@@ -79,13 +79,17 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`==================================================`);
-  console.log(`Sweet Studio — Aaryan Bakery Backend Server Running`);
-  console.log(`Port: ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`Public API: http://localhost:${PORT}/api`);
-  console.log(`Admin Login API: http://localhost:${PORT}/api/admin/login`);
-  console.log(`AI Chat API: http://localhost:${PORT}/api/chat`);
-  console.log(`==================================================`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`==================================================`);
+    console.log(`Sweet Studio — Aaryan Bakery Backend Server Running`);
+    console.log(`Port: ${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`Public API: http://localhost:${PORT}/api`);
+    console.log(`Admin Login API: http://localhost:${PORT}/api/admin/login`);
+    console.log(`AI Chat API: http://localhost:${PORT}/api/chat`);
+    console.log(`==================================================`);
+  });
+}
+
+module.exports = app;

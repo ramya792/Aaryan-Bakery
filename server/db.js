@@ -587,8 +587,12 @@ function loadData() {
 }
 
 function saveData(data) {
-  ensureDataDir();
-  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+  try {
+    ensureDataDir();
+    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+  } catch (err) {
+    console.warn("[Notice] Filesystem write skipped in serverless environment:", err.message);
+  }
 }
 
 let store = loadData();
